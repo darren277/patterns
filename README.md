@@ -15,3 +15,7 @@ Example of the observer pattern used to implement an event stream processor for 
 ## Decorator Pattern (Service and Caching)
 
 Example of the decorator pattern used to implement a service layer with caching: `my_app/src/service.py`.
+
+## Factory Pattern (Users)
+
+Example of the factory pattern used for instantiating different kinds of users: `my_app/src/users.py`.
