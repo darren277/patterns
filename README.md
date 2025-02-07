@@ -36,6 +36,9 @@ Examples:
 
 Principle: _Open for extension, but closed for modification._
 
+Examples:
+1. `my_app/src/auth.py`: Our authentication strategies can be extended without modifying the main `Auth` class. For example, if we wanted to add an `OAuthStrategy`, we would not have to touch the original `Auth` class.
+
 ### Liskov Substitution Principle (LSP)
 
 Principle: _Subtypes must be substitutable for their base types._
