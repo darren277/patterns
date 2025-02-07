@@ -1,5 +1,5 @@
 """"""
-from typing import Literal
+from typing import Literal, Dict, Type
 from abc import ABC, abstractmethod
 
 
@@ -19,12 +19,17 @@ class NormalUser(User):
     def get_role_permissions(self) -> list:
         return ["read"]
 
+
 class UserFactory:
+    _user_types: Dict[str, Type[User]] = {}
+
     @staticmethod
-    def create_user(user_type: Literal["admin", "normal"], username: str):
-        if user_type == "admin":
-            return AdminUser(username)
-        elif user_type == "normal":
-            return NormalUser(username)
-        else:
+    def register_user_type(user_type: str, user_class: Type[User]) -> None:
+        UserFactory._user_types[user_type] = user_class
+
+    @staticmethod
+    def create_user(user_type: str, username: str) -> User:
+        user_class = UserFactory._user_types.get(user_type)
+        if user_class is None:
             raise ValueError(f"Unknown user type: {user_type}")
+        return user_class(username)

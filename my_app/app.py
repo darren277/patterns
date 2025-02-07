@@ -5,7 +5,7 @@ from my_app.src.auth import TokenAuthStrategy, BasicAuthStrategy, AuthContext
 from my_app.src.db import DatabaseConnection, DatabaseConfig
 from my_app.src.events import user_registered_subject
 from my_app.src.service import CachingDecorator, DataService
-from my_app.src.users import UserFactory
+from my_app.src.users import UserFactory, AdminUser, NormalUser
 
 app = Flask(__name__)
 
@@ -22,6 +22,10 @@ db_connection = DatabaseConnection(config=DatabaseConfig(
 
 # Wrap our data service with the caching decorator
 data_service = CachingDecorator(DataService())
+
+
+UserFactory.register_user_type("admin", AdminUser)
+UserFactory.register_user_type("normal", NormalUser)
 
 
 @app.route("/")

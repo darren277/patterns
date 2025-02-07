@@ -38,6 +38,7 @@ Principle: _Open for extension, but closed for modification._
 
 Examples:
 1. `my_app/src/auth.py`: Our authentication strategies can be extended without modifying the main `Auth` class. For example, if we wanted to add an `OAuthStrategy`, we would not have to touch the original `Auth` class.
+2. `my_app/src/users.py`: We can implement a registration based approach so that we can create new user types dynamically, and register them at run time, without modifying `UserFactory`.
 
 ### Liskov Substitution Principle (LSP)
 
