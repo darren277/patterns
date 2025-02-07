@@ -14,3 +14,19 @@ class DatabaseConnection:
         # Pseudo code for DB connection
         print("Establishing new database connection...")
         return "DB_CONNECTION_OBJECT"
+
+
+class DatabaseConfig:
+    def __init__(self, host, port, name, user, password):
+        self.host = host
+        self.port = port
+        self.name = name
+        self.user = user
+        self.password = password
+
+    def __str__(self):
+        return f"DatabaseConfig:URIString={self._uri_string()}"
+
+    def _uri_string(self):
+        return f"{self.user}:{self.password}@{self.host}:{self.port}/{self.name}"
+

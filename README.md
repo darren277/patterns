@@ -30,6 +30,7 @@ Principle: _A class should have one and only one reason to change._
 
 Examples:
 1. `my_app/src/users.py`: Each `User` subclass has its own role-specific logic (`AdminUser`, `NormalUser`).
+2. `my_app/src/db.py`: Our original `DatabaseConnection` class was responsible for both ensuring only one instance (using the `Singleton` pattern), as well as connecting to the database. We will create separate `DatabaseConfig` and `DatabaseConnection` classes.
 
 ### Open/Closed Principle (OCP)
 
