@@ -28,6 +28,9 @@ Example of the factory pattern used for instantiating different kinds of users: 
 
 Principle: _A class should have one and only one reason to change._
 
+Examples:
+1. `my_app/src/users.py`: Each `User` subclass has its own role-specific logic (`AdminUser`, `NormalUser`).
+
 ### Open/Closed Principle (OCP)
 
 Principle: _Open for extension, but closed for modification._
