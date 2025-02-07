@@ -44,6 +44,9 @@ Examples:
 
 Principle: _Subtypes must be substitutable for their base types._
 
+Examples:
+1. `my_app/src/users.py`: Anywhere a `User` is expected, you could pass in either an `AdminUser` or a `NormalUser`.
+
 ### Interface Segregation Principle (ISP)
 
 Principle: _Keep interfaces small and focused._
