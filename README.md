@@ -54,6 +54,9 @@ Principle: _Keep interfaces small and focused._
 
 Examples:
 1. `my_app/src/events.py`: The `Observer` classes only have the `update` method, meaning the client is not forced to implement unneeded methods.
+2. `my_app/src/service.py`: Right now, the `DataService` class is specifically bound to a single data source. We will therefore implement an additional `IDataService` interface.
+
+In order to adhere to this principle as this project expands, it will be important to keep methods both simple in logic and decoupled from one another.
 
 ### Dependency Inversion Principle (DIP)
 
