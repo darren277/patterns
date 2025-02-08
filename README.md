@@ -46,6 +46,7 @@ Principle: _Subtypes must be substitutable for their base types._
 
 Examples:
 1. `my_app/src/users.py`: Anywhere a `User` is expected, you could pass in either an `AdminUser` or a `NormalUser`.
+2. `my_app/src/auth.py`: Currently, `BasicAuthStrategy.authenticate` takes in a `username` and a `password` parameter, while `TokenAuthStrategy.authenticate` expects `username` and `token`. For better consistency in the method signature, we will change these arguments to `username` and `credential`.
 
 ### Interface Segregation Principle (ISP)
 

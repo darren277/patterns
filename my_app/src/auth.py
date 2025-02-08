@@ -3,19 +3,24 @@ from abc import ABC, abstractmethod
 
 
 class AuthStrategy(ABC):
+    '''
+    The `credential` parameter can be a password or a token, depending on the strategy.
+    New strategies can be added by implementing this interface potentially using other types of credential.
+    '''
     @abstractmethod
-    def authenticate(self, username: str, password_or_token: str):
+    def authenticate(self, username: str, credential: str):
         pass
 
 class BasicAuthStrategy(AuthStrategy):
-    def authenticate(self, username: str, password: str) -> bool:
+    def authenticate(self, username: str, credential: str) -> bool:
         print("Authenticating with BasicAuthStrategy...")
-        return username == "admin" and password == "secret"
+        return username == "admin" and credential == "secret"
 
 class TokenAuthStrategy(AuthStrategy):
-    def authenticate(self, username: str, token: str) -> bool:
+    def authenticate(self, username: str, credential: str) -> bool:
         print("Authenticating with TokenAuthStrategy...")
-        return token == "valid_api_token"
+        return credential == "valid_api_token"
+
 
 class AuthContext:
     def __init__(self, strategy: AuthStrategy):
