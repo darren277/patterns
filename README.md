@@ -52,6 +52,9 @@ Examples:
 
 Principle: _Keep interfaces small and focused._
 
+Examples:
+1. `my_app/src/events.py`: The `Observer` classes only have the `update` method, meaning the client is not forced to implement unneeded methods.
+
 ### Dependency Inversion Principle (DIP)
 
 Principle: _High-level modules should not depend on low-level modules. Both should depend on abstractions._
