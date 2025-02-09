@@ -61,3 +61,5 @@ In order to adhere to this principle as this project expands, it will be importa
 ### Dependency Inversion Principle (DIP)
 
 Principle: _High-level modules should not depend on low-level modules. Both should depend on abstractions._
+
+1. `my_app/src/auth.py`: The `AuthContext` is a higher level module that depends on the `AuthStrategy` abstraction.
