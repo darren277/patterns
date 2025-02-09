@@ -63,3 +63,6 @@ In order to adhere to this principle as this project expands, it will be importa
 Principle: _High-level modules should not depend on low-level modules. Both should depend on abstractions._
 
 1. `my_app/src/auth.py`: The `AuthContext` is a higher level module that depends on the abstract `AuthStrategy` interface rather than any specific implementation. This means we can introduce new authentication strategies without modifying core business logic.
+2. `my_app/src/db.py`: The `DatabaseConnection` class was directly managing the connection logic thus tightly coupling it to the implementation (`_connect_to_db`). To provide more flexibility for other database connection types (such as MySQL or Postgres or a whole variety of others), we will change this by introducing an abstract interface.
+
+In the future, as this project expands, we may want to consider using dependency injection to further adhere to this principle.

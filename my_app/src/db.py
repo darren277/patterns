@@ -1,12 +1,29 @@
 """"""
+from abc import ABC, abstractmethod
+
+class IDatabaseConnection(ABC):
+    @abstractmethod
+    def connect(self) -> str:
+        pass
+
+class MySQLConnection(IDatabaseConnection):
+    def connect(self) -> str:
+        print("Connecting to MySQL...")
+        return "MYSQL_CONNECTION_OBJECT"
+
+class PostgreSQLConnection(IDatabaseConnection):
+    def connect(self) -> str:
+        print("Connecting to PostgreSQL...")
+        return "POSTGRESQL_CONNECTION_OBJECT"
+
 
 class DatabaseConnection:
     _instance = None
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, connection_impl: IDatabaseConnection, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
-            cls._instance.connection = cls._connect_to_db()
+            cls._instance.connection = connection_impl.connect()
         return cls._instance
 
     @classmethod
