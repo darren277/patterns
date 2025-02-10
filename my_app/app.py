@@ -2,7 +2,7 @@
 from flask import Flask, request, jsonify
 
 from my_app.src.auth import TokenAuthStrategy, BasicAuthStrategy, AuthContext
-from my_app.src.db import DatabaseConnection, DatabaseConfig
+from my_app.src.db import DatabaseConnection, DatabaseConfig, PostgreSQLConnection
 from my_app.src.events import user_registered_subject
 from my_app.src.service import CachingDecorator, DataService
 from my_app.src.users import UserFactory, AdminUser, NormalUser
@@ -12,20 +12,23 @@ PORT = 5010
 
 def create_app(config_filename="config.json"):
     app = Flask(__name__)
-    app.config.from_json(config_filename)
+    #app.config.from_json(config_filename)
 
     # The single instance
-    db_connection = DatabaseConnection(config=DatabaseConfig(
-        host="localhost",
-        port=5432,
-        name="my_db",
-        user="admin",
-        password="admin"
-    ))
+    db_connection = DatabaseConnection(
+        PostgreSQLConnection(),
+        config=DatabaseConfig(
+            host="localhost",
+            port=5432,
+            name="my_db",
+            user="admin",
+            password="admin"
+        )
+    )
 
-    return app
+    return db_connection, app
 
-app = create_app()
+db_connection, app = create_app()
 
 # Wrap our data service with the caching decorator
 data_service = CachingDecorator(DataService())
