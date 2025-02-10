@@ -66,3 +66,15 @@ Principle: _High-level modules should not depend on low-level modules. Both shou
 2. `my_app/src/db.py`: The `DatabaseConnection` class was directly managing the connection logic thus tightly coupling it to the implementation (`_connect_to_db`). To provide more flexibility for other database connection types (such as MySQL or Postgres or a whole variety of others), we will change this by introducing an abstract interface.
 
 In the future, as this project expands, we may want to consider using dependency injection to further adhere to this principle.
+
+## Testing Patterns
+
+### Unit Testing
+
+This project uses `pytest` for unit testing.
+
+You can run the unit tests by simply running `pytest` in the root directory of the project.
+
+There are currently some basic fixtures for configuring the test environment, and a `pytest.ini`.
+
+For code coverage, run: `pytest --cov=my_app --cov-report=term-missing`.
