@@ -77,4 +77,4 @@ You can run the unit tests by simply running `pytest` in the root directory of t
 
 There are currently some basic fixtures for configuring the test environment, and a `pytest.ini`.
 
-For code coverage, run: `pytest --cov=my_app --cov-report=term-missing`.
+~~For code coverage, run~~: `pytest --cov=my_app --cov-report=term-missing`. Now done automatically via `pytest.ini` configuration.
