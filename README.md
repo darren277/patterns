@@ -1,5 +1,9 @@
 # patterns
 
+## About
+
+This repository serves as a showcase of all the best practices of software development, from OOP design patterns to applying SOLID principles, 12 Factor applications, Clean Code, and more.
+
 ## Object Oriented Design Patterns
 
 ### Strategy Pattern (Auth)
